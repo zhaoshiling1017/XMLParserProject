@@ -3,6 +3,7 @@ package com.unicss;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 import java.io.*;
 public class XmlDom4J{
@@ -29,7 +30,9 @@ public void generateDocument(){
     /* document.addDocType("catalog",
                            null,"file://c:/Dtds/catalog.dtd");*/
     try{
-    	XMLWriter output = new XMLWriter(new FileWriter( new File("/home/lenzhao/data/catalog.xml") ));
+    	OutputFormat format = OutputFormat.createPrettyPrint();
+    	format.setEncoding("UTF-8");
+    	XMLWriter output = new XMLWriter(new FileWriter( new File("/home/lenzhao/data/catalog.xml") ), format);
         output.write( document );
         output.close();
     }catch(IOException e){
