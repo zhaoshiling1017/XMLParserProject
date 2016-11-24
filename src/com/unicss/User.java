@@ -1,6 +1,8 @@
 package com.unicss;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+@XStreamAlias("user")
 public class User {
 		private String userName;  
 	    private String passWord;  

@@ -18,6 +18,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 public class JaxbReadXml {
 //xml  --->  bean
@@ -105,7 +109,7 @@ public class JaxbReadXml {
     }
     writer.close();
     reader.close();*/
-	   TestOrgs orgs = new TestOrgs();
+	   /*TestOrgs orgs = new TestOrgs();
 	   orgs.setBatchNumber(20150418001L);
 	   orgs.setErrmsg("no error");
 	   orgs.setSize(1);
@@ -128,6 +132,21 @@ public class JaxbReadXml {
        wt.write(xml);
        wt.flush();
        wt.close();
-       System.out.println(xml);
+       System.out.println(xml);*/
+	   Message msg = readString(Message.class, "/home/lenzhao/data/jaxb.xml");
+	   System.out.println(msg.remainpoint);
    }
+   
+   @XmlRootElement(name = "returnsms" )
+	@XmlAccessorType(XmlAccessType.FIELD )
+	public static class Message{
+		@XmlElement(name = "returnstatus")
+		public String returnstatus;
+		@XmlElement(name="remainpoint")
+		public String remainpoint;
+		@XmlElement(name="taskID")
+		public String taskID;
+		@XmlElement(name="successCounts")
+		public String successCounts;
+	}
 }

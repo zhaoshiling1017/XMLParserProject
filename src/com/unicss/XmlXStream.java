@@ -21,9 +21,11 @@ public class XmlXStream {
   
     // 1. obj -> xml(object类型转换为xml类型)  
     public String printXML(User user) {  
+    	xStream.setMode(XStream.NO_REFERENCES);
+    	xStream.processAnnotations(new Class[]{User.class}); 
         System.out.println("obj -> xml");  
         //xStream.alias("user", User.class);
-        xStream.alias("xml", User.class);
+        //xStream.alias("xml", User.class);
         String xml = xStream.toXML(user);  
         System.out.println(xml);  
         return xml;  
